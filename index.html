@@ -1,1 +1,626 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A clear view of affiliate marketing performance across every social platform."
+    />
+    <title>Signalboard | Creator revenue intelligence</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap");
+      :root {
+        --ink: #18221f;
+        --muted: #74817d;
+        --line: #e4e9e5;
+        --paper: #f7f9f6;
+        --mint: #c9f2df;
+        --green: #1e7655;
+        --coral: #f27261;
+        --yellow: #f3c866;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Manrope", sans-serif;
+      }
+      .mono {
+        font-family: "DM Mono", monospace;
+      }
+      .grid-paper {
+        background-image:
+          linear-gradient(#e8eee9 1px, transparent 1px),
+          linear-gradient(90deg, #e8eee9 1px, transparent 1px);
+        background-size: 28px 28px;
+      }
+      .sparkline {
+        stroke: var(--green);
+        stroke-width: 2.5;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .rise {
+        animation: rise 0.55s ease both;
+      }
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .rise {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen">
+      <header class="border-b border-[#e4e9e5] bg-[#fbfcfa]">
+        <div
+          class="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-10"
+        >
+          <a
+            href="#overview"
+            class="flex items-center gap-3"
+            aria-label="Signalboard home"
+            ><span
+              class="grid h-9 w-9 place-items-center rounded-xl bg-[#18221f] text-sm font-extrabold text-[#c9f2df]"
+              >S</span
+            ><span class="text-lg font-extrabold tracking-[-0.04em]"
+              >signalboard<span class="text-[#1e7655]">.</span></span
+            ></a
+          >
+          <nav
+            class="hidden items-center gap-7 text-sm font-semibold text-[#74817d] md:flex"
+            aria-label="Primary navigation"
+          >
+            <a class="text-[#18221f]" href="#overview">Overview</a
+            ><a class="hover:text-[#18221f]" href="#drivers">Drivers</a
+            ><a class="hover:text-[#18221f]" href="#details">Reports</a>
+          </nav>
+          <div class="flex items-center gap-2 sm:gap-4">
+            <button
+              class="hidden text-sm font-semibold text-[#74817d] sm:block"
+              type="button"
+            >
+              Export report</button
+            ><button
+              class="grid h-9 w-9 place-items-center rounded-full border border-[#e4e9e5] bg-white text-xs font-bold"
+              type="button"
+              aria-label="Open account menu"
+            >
+              BL
+            </button>
+          </div>
+        </div>
+      </header>
 
+      <main
+        id="overview"
+        class="mx-auto max-w-[1440px] px-4 py-7 sm:px-6 sm:py-10 lg:px-10"
+      >
+        <section
+          class="mb-8 flex flex-col justify-between gap-5 sm:flex-row sm:items-end"
+        >
+          <div>
+            <p
+              class="mono mb-2 text-[10px] font-medium uppercase tracking-[0.2em] text-[#1e7655]"
+            >
+              Performance overview / Oct 01 - Oct 31, 2024
+            </p>
+            <h1 class="text-3xl font-extrabold tracking-[-0.06em] sm:text-4xl">
+              Good signals,
+              <span class="text-[#1e7655]">better decisions.</span>
+            </h1>
+            <p class="mt-2 max-w-xl text-sm leading-6 text-[#74817d]">
+              Your affiliate ecosystem at a glance. Commissions are calculated
+              at a 15% rate across all products.
+            </p>
+          </div>
+          <div class="flex items-center gap-2">
+            <label class="sr-only" for="period">Reporting period</label
+            ><select
+              id="period"
+              class="rounded-lg border border-[#e4e9e5] bg-white px-3 py-2 text-xs font-bold text-[#18221f] outline-none"
+              aria-label="Reporting period"
+            >
+              <option>Last 30 days</option>
+              <option>Last 90 days</option>
+              <option>Year to date</option></select
+            ><button
+              class="rounded-lg bg-[#18221f] px-4 py-2 text-xs font-bold text-white"
+              type="button"
+            >
+              Sync data
+            </button>
+          </div>
+        </section>
+
+        <section aria-labelledby="outcomes-heading" class="rise mb-10">
+          <div class="mb-4 flex items-center justify-between">
+            <h2
+              id="outcomes-heading"
+              class="text-xs font-extrabold uppercase tracking-[0.16em] text-[#74817d]"
+            >
+              01 / Main outcomes
+            </h2>
+            <span class="mono text-[10px] text-[#98a39f]"
+              >Compared to previous period</span
+            >
+          </div>
+          <div class="grid gap-4 md:grid-cols-3">
+            <article
+              class="rounded-2xl border border-[#d6e8dd] bg-[#c9f2df] p-5 sm:p-6"
+            >
+              <div class="mb-8 flex items-start justify-between">
+                <p class="text-sm font-bold">Commission generated</p>
+                <span
+                  class="rounded-full bg-white/70 px-2 py-1 text-[10px] font-extrabold text-[#1e7655]"
+                  >+18.4%</span
+                >
+              </div>
+              <div class="flex items-end justify-between gap-4">
+                <div>
+                  <p class="text-4xl font-extrabold tracking-[-0.07em]">
+                    $8,420
+                  </p>
+                  <p class="mt-1 text-xs font-semibold text-[#4c7866]">
+                    from 142 conversions
+                  </p>
+                </div>
+                <svg
+                  width="92"
+                  height="42"
+                  viewBox="0 0 92 42"
+                  aria-label="Commission trend rising"
+                >
+                  <path
+                    class="sparkline"
+                    d="M2 35 L14 29 L25 32 L37 18 L49 23 L61 11 L73 17 L90 4"
+                  />
+                </svg>
+              </div>
+            </article>
+            <article
+              class="rounded-2xl border border-[#e4e9e5] bg-white p-5 sm:p-6"
+            >
+              <div class="mb-8 flex items-start justify-between">
+                <p class="text-sm font-bold">Revenue influenced</p>
+                <span
+                  class="rounded-full bg-[#eaf6ef] px-2 py-1 text-[10px] font-extrabold text-[#1e7655]"
+                  >+12.1%</span
+                >
+              </div>
+              <div class="flex items-end justify-between gap-4">
+                <div>
+                  <p class="text-4xl font-extrabold tracking-[-0.07em]">
+                    $56,133
+                  </p>
+                  <p class="mt-1 text-xs font-semibold text-[#74817d]">
+                    $395 average order value
+                  </p>
+                </div>
+                <svg
+                  width="92"
+                  height="42"
+                  viewBox="0 0 92 42"
+                  aria-label="Revenue trend rising"
+                >
+                  <path
+                    class="sparkline"
+                    d="M2 32 L14 33 L25 24 L37 28 L49 16 L61 21 L73 9 L90 11"
+                  />
+                </svg>
+              </div>
+            </article>
+            <article
+              class="rounded-2xl border border-[#e4e9e5] bg-white p-5 sm:p-6"
+            >
+              <div class="mb-8 flex items-start justify-between">
+                <p class="text-sm font-bold">Conversion rate</p>
+                <span
+                  class="rounded-full bg-[#fff2e8] px-2 py-1 text-[10px] font-extrabold text-[#c45d35]"
+                  >+2.6%</span
+                >
+              </div>
+              <div class="flex items-end justify-between gap-4">
+                <div>
+                  <p class="text-4xl font-extrabold tracking-[-0.07em]">
+                    3.84%
+                  </p>
+                  <p class="mt-1 text-xs font-semibold text-[#74817d]">
+                    142 sales / 3,698 clicks
+                  </p>
+                </div>
+                <svg
+                  width="92"
+                  height="42"
+                  viewBox="0 0 92 42"
+                  aria-label="Conversion trend rising"
+                >
+                  <path
+                    class="sparkline"
+                    d="M2 36 L14 31 L25 34 L37 26 L49 28 L61 18 L73 20 L90 6"
+                  />
+                </svg>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section
+          id="drivers"
+          aria-labelledby="drivers-heading"
+          class="rise mb-10"
+          style="animation-delay: 0.1s"
+        >
+          <div class="mb-4 flex items-center justify-between">
+            <h2
+              id="drivers-heading"
+              class="text-xs font-extrabold uppercase tracking-[0.16em] text-[#74817d]"
+            >
+              02 / What is driving growth
+            </h2>
+            <a href="#details" class="text-xs font-bold text-[#1e7655]"
+              >View full report <span aria-hidden="true">-&gt;</span></a
+            >
+          </div>
+          <div class="grid gap-4 lg:grid-cols-3">
+            <article class="rounded-2xl border border-[#e4e9e5] bg-white p-5">
+              <div class="mb-5 flex items-center justify-between">
+                <h3 class="font-extrabold">Sales funnel</h3>
+                <span class="mono text-[10px] text-[#98a39f]"
+                  >ALL CHANNELS</span
+                >
+              </div>
+              <div class="space-y-3">
+                <div>
+                  <div class="mb-1 flex justify-between text-xs font-bold">
+                    <span>Reach</span><span>284.6K</span>
+                  </div>
+                  <div class="h-2 rounded-full bg-[#edf1ee]">
+                    <div class="h-2 w-full rounded-full bg-[#9bdabd]"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="mb-1 flex justify-between text-xs font-bold">
+                    <span>Engaged</span
+                    ><span
+                      >42.8K
+                      <small class="font-medium text-[#74817d]"
+                        >15.0%</small
+                      ></span
+                    >
+                  </div>
+                  <div class="h-2 rounded-full bg-[#edf1ee]">
+                    <div class="h-2 w-[64%] rounded-full bg-[#67b995]"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="mb-1 flex justify-between text-xs font-bold">
+                    <span>Clicks</span
+                    ><span
+                      >3,698
+                      <small class="font-medium text-[#74817d]"
+                        >8.6%</small
+                      ></span
+                    >
+                  </div>
+                  <div class="h-2 rounded-full bg-[#edf1ee]">
+                    <div class="h-2 w-[39%] rounded-full bg-[#3f9976]"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="mb-1 flex justify-between text-xs font-bold">
+                    <span>Conversions</span
+                    ><span
+                      >142
+                      <small class="font-medium text-[#74817d]"
+                        >3.84%</small
+                      ></span
+                    >
+                  </div>
+                  <div class="h-2 rounded-full bg-[#edf1ee]">
+                    <div class="h-2 w-[18%] rounded-full bg-[#1e7655]"></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="rounded-2xl border border-[#e4e9e5] bg-white p-5">
+              <div class="mb-5 flex items-center justify-between">
+                <h3 class="font-extrabold">Platform return</h3>
+                <span class="mono text-[10px] text-[#98a39f]">ROAS</span>
+              </div>
+              <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="grid h-8 w-8 place-items-center rounded-lg bg-[#fde4e3] text-xs font-extrabold text-[#df605d]"
+                    >IG</span
+                  >
+                  <div class="min-w-0 flex-1">
+                    <div class="mb-1 flex justify-between text-xs font-bold">
+                      <span>Instagram</span><span>4.8x</span>
+                    </div>
+                    <div class="h-1.5 rounded-full bg-[#edf1ee]">
+                      <div
+                        class="h-1.5 w-[92%] rounded-full bg-[#f27261]"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span
+                    class="grid h-8 w-8 place-items-center rounded-lg bg-[#e8e8e8] text-xs font-extrabold"
+                    >TT</span
+                  >
+                  <div class="min-w-0 flex-1">
+                    <div class="mb-1 flex justify-between text-xs font-bold">
+                      <span>TikTok</span><span>3.6x</span>
+                    </div>
+                    <div class="h-1.5 rounded-full bg-[#edf1ee]">
+                      <div
+                        class="h-1.5 w-[71%] rounded-full bg-[#18221f]"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span
+                    class="grid h-8 w-8 place-items-center rounded-lg bg-[#ffe7b8] text-xs font-extrabold text-[#9b6a1a]"
+                    >YT</span
+                  >
+                  <div class="min-w-0 flex-1">
+                    <div class="mb-1 flex justify-between text-xs font-bold">
+                      <span>YouTube</span><span>2.9x</span>
+                    </div>
+                    <div class="h-1.5 rounded-full bg-[#edf1ee]">
+                      <div
+                        class="h-1.5 w-[58%] rounded-full bg-[#e5ae3f]"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="grid-paper rounded-2xl border border-[#e4e9e5] p-5">
+              <div class="mb-5 flex items-center justify-between">
+                <h3 class="font-extrabold">Engagement pulse</h3>
+                <span
+                  class="rounded-full bg-white px-2 py-1 text-[10px] font-extrabold text-[#1e7655]"
+                  >Healthy</span
+                >
+              </div>
+              <div class="flex items-end justify-between">
+                <div>
+                  <p class="text-4xl font-extrabold tracking-[-0.07em]">
+                    15.0%
+                  </p>
+                  <p class="mt-1 text-xs font-semibold text-[#74817d]">
+                    overall engagement rate
+                  </p>
+                </div>
+                <div class="text-right">
+                  <p class="text-sm font-extrabold">42,813</p>
+                  <p class="text-[10px] font-semibold text-[#74817d]">
+                    total interactions
+                  </p>
+                </div>
+              </div>
+              <div
+                class="mt-7 flex items-end gap-1"
+                aria-label="Engagement activity over seven days"
+              >
+                <span class="h-5 flex-1 rounded-t bg-[#b8dfc8]"></span
+                ><span class="h-8 flex-1 rounded-t bg-[#8bceb0]"></span
+                ><span class="h-6 flex-1 rounded-t bg-[#b8dfc8]"></span
+                ><span class="h-10 flex-1 rounded-t bg-[#55aa83]"></span
+                ><span class="h-7 flex-1 rounded-t bg-[#8bceb0]"></span
+                ><span class="h-12 flex-1 rounded-t bg-[#1e7655]"></span
+                ><span class="h-10 flex-1 rounded-t bg-[#55aa83]"></span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section
+          id="details"
+          aria-labelledby="details-heading"
+          class="rise"
+          style="animation-delay: 0.2s"
+        >
+          <div class="mb-4 flex items-center justify-between">
+            <h2
+              id="details-heading"
+              class="text-xs font-extrabold uppercase tracking-[0.16em] text-[#74817d]"
+            >
+              03 / Operational details
+            </h2>
+            <div class="flex items-center gap-2">
+              <span
+                class="hidden text-xs font-semibold text-[#74817d] sm:inline"
+                >Updated 8 min ago</span
+              ><button
+                class="rounded-lg border border-[#e4e9e5] bg-white px-3 py-2 text-xs font-bold"
+                type="button"
+              >
+                Filter
+              </button>
+            </div>
+          </div>
+          <div class="grid gap-4 xl:grid-cols-[1.45fr_1fr]">
+            <article
+              class="overflow-hidden rounded-2xl border border-[#e4e9e5] bg-white"
+            >
+              <div
+                class="flex items-center justify-between border-b border-[#e4e9e5] px-5 py-4"
+              >
+                <h3 class="font-extrabold">Product performance</h3>
+                <span class="mono text-[10px] text-[#98a39f]">3 PRODUCTS</span>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full min-w-[600px] text-left text-xs">
+                  <thead
+                    class="bg-[#fbfcfa] text-[10px] uppercase tracking-[0.1em] text-[#98a39f]"
+                  >
+                    <tr>
+                      <th class="px-5 py-3 font-bold">Product</th>
+                      <th class="px-3 py-3 font-bold">Price</th>
+                      <th class="px-3 py-3 font-bold">Sales</th>
+                      <th class="px-3 py-3 font-bold">Commission</th>
+                      <th class="px-5 py-3 text-right font-bold">Share</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[#e4e9e5]">
+                    <tr>
+                      <td class="px-5 py-4 font-extrabold">
+                        Product B
+                        <span
+                          class="ml-1 rounded bg-[#fff2e8] px-1.5 py-1 text-[9px] font-bold text-[#c45d35]"
+                          >TOP</span
+                        >
+                      </td>
+                      <td class="px-3 py-4 font-semibold">$120</td>
+                      <td class="px-3 py-4 font-semibold">51</td>
+                      <td class="px-3 py-4 font-extrabold text-[#1e7655]">
+                        $918
+                      </td>
+                      <td class="px-5 py-4 text-right font-semibold">42%</td>
+                    </tr>
+                    <tr>
+                      <td class="px-5 py-4 font-extrabold">Product C</td>
+                      <td class="px-3 py-4 font-semibold">$80</td>
+                      <td class="px-3 py-4 font-semibold">47</td>
+                      <td class="px-3 py-4 font-extrabold text-[#1e7655]">
+                        $564
+                      </td>
+                      <td class="px-5 py-4 text-right font-semibold">27%</td>
+                    </tr>
+                    <tr>
+                      <td class="px-5 py-4 font-extrabold">Product A</td>
+                      <td class="px-3 py-4 font-semibold">$50</td>
+                      <td class="px-3 py-4 font-semibold">44</td>
+                      <td class="px-3 py-4 font-extrabold text-[#1e7655]">
+                        $330
+                      </td>
+                      <td class="px-5 py-4 text-right font-semibold">16%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+            <article class="rounded-2xl border border-[#e4e9e5] bg-white">
+              <div
+                class="flex items-center justify-between border-b border-[#e4e9e5] px-5 py-4"
+              >
+                <h3 class="font-extrabold">Best platforms</h3>
+                <span class="mono text-[10px] text-[#98a39f]"
+                  >BY COMMISSION</span
+                >
+              </div>
+              <ul class="divide-y divide-[#e4e9e5]">
+                <li class="flex items-center gap-3 px-5 py-4">
+                  <span
+                    class="grid h-8 w-8 place-items-center rounded-lg bg-[#fde4e3] text-xs font-extrabold text-[#df605d]"
+                    >IG</span
+                  >
+                  <div class="flex-1">
+                    <p class="text-xs font-extrabold">Instagram</p>
+                    <p class="mt-0.5 text-[10px] font-semibold text-[#74817d]">
+                      62 conversions / 4.8x ROAS
+                    </p>
+                  </div>
+                  <span class="font-extrabold text-[#1e7655]">$3,944</span>
+                </li>
+                <li class="flex items-center gap-3 px-5 py-4">
+                  <span
+                    class="grid h-8 w-8 place-items-center rounded-lg bg-[#e8e8e8] text-xs font-extrabold"
+                    >TT</span
+                  >
+                  <div class="flex-1">
+                    <p class="text-xs font-extrabold">TikTok</p>
+                    <p class="mt-0.5 text-[10px] font-semibold text-[#74817d]">
+                      49 conversions / 3.6x ROAS
+                    </p>
+                  </div>
+                  <span class="font-extrabold text-[#1e7655]">$2,741</span>
+                </li>
+                <li class="flex items-center gap-3 px-5 py-4">
+                  <span
+                    class="grid h-8 w-8 place-items-center rounded-lg bg-[#ffe7b8] text-xs font-extrabold text-[#9b6a1a]"
+                    >YT</span
+                  >
+                  <div class="flex-1">
+                    <p class="text-xs font-extrabold">YouTube</p>
+                    <p class="mt-0.5 text-[10px] font-semibold text-[#74817d]">
+                      31 conversions / 2.9x ROAS
+                    </p>
+                  </div>
+                  <span class="font-extrabold text-[#1e7655]">$1,735</span>
+                </li>
+              </ul>
+            </article>
+          </div>
+          <div class="mt-4 grid gap-4 lg:grid-cols-2">
+            <article
+              class="rounded-2xl border border-[#f4dfb5] bg-[#fffaf0] p-5"
+            >
+              <div class="flex gap-3">
+                <span
+                  class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[#f3c866] text-sm font-extrabold"
+                  >!</span
+                >
+                <div>
+                  <h3 class="text-sm font-extrabold">Opportunity detected</h3>
+                  <p class="mt-1 text-xs leading-5 text-[#746344]">
+                    Product B converts 41% better on Instagram. Reallocate 10%
+                    of TikTok spend to the next product launch.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article
+              class="rounded-2xl border border-[#f2d8d5] bg-[#fff8f7] p-5"
+            >
+              <div class="flex gap-3">
+                <span
+                  class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[#f27261] text-sm font-extrabold text-white"
+                  >!</span
+                >
+                <div>
+                  <h3 class="text-sm font-extrabold">Conversion dip</h3>
+                  <p class="mt-1 text-xs leading-5 text-[#8a625e]">
+                    YouTube conversion rate fell 1.2 points over the last 7
+                    days. Check the latest video CTA and landing page.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+      <footer class="border-t border-[#e4e9e5] bg-white">
+        <div
+          class="mx-auto flex max-w-[1440px] flex-col gap-2 px-4 py-5 text-[10px] font-semibold text-[#98a39f] sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-10"
+        >
+          <span>Signalboard / Affiliate intelligence</span
+          ><span
+            >Commission rate: 15% &middot; Data synced from 3 platforms</span
+          >
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
